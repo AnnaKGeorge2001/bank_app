@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+
+  <p style="text-align:center;">To fill the application form click the button</p>
+  <div style="text-align: center;">
+    <button type="button" style="display: block; margin: 0 auto;">
+      <a href="{% url 'form_view' %}">Click here</a>
+    </button>
+  </div>
+{% endblock %}

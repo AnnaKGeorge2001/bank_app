@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1 style="text-align:center;">Application Form</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'form_view' %}">
+        {% csrf_token %}
+        <label style="width:122px;">Name</label><input type="text" name="name"><br>
+        <label style="width:122px;">DOB</label><input type="date" name="dob"><br>
+        <label style="width:122px;">Age</label><input type="number" name="age"><br>
+        <label style="width:122px;">Gender</label><input type="text" name="gender"><br>
+        <label style="width:122px;">Phone number</label><input type="tel" name="phone_number"><br>
+        <label style="width:122px;">Mail ID</label><input type="email" name="mail_id"><br>
+        <label style="width:122px;">Address</label><input type="text" name="address"><br>
+
+        <div class="form-group">
+            <label for="{{ form.district.id_for_label }}" style="width:122px;">District:</label>
+            {{ form.district }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.branch.id_for_label }}" style="width:122px;">Branch:</label>
+            {{ form.branch }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.account_type.id_for_label }}" style="width:122px;">Account type:</label>
+            {{ form.account_type }}
+        </div>
+
+       <div class="form-group">
+        <label for="{{ form.materials_provide.id_for_label }}">Materials Provided:</label>
+        {{ form.materials_provide }}
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+{% endfor %}
+    <button type="button">
+      <a href="{% url 'home' %}">Logout</a>
+    </button><br>
+    <a href="{% url 'home' %}">Go to Home</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1 style="text-align:center;">Register</h1>
+<div class="form-container">
+<form action="{% url 'register' %}" method="post" style= "text-align: center;">
+    {% csrf_token %}
+    <label style="width:122px;">Username</label><input type="text" name="username" placeholder="username"><br>
+    <label style="width:122px;">Password </label><input type="password" name="password" placeholder="password"><br>
+    <label>Confirm Password </label><input type="password" name="cpassword" placeholder="Confirm password"><br><br>
+
+    <input type="submit">
+
+</form><br>
+
+{% for msg in messages %}
+<h1>{{msg}}</h1>
+{% endfor %}
+    </div>
+
+{% endblock %}
